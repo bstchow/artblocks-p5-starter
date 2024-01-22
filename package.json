@@ -1,0 +1,48 @@
+{
+  "private": true,
+  "scripts": {
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write .",
+    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "prepare": "husky install",
+    "start": "webpack serve --open --mode=development --config webpack.dev.js",
+    "build": "webpack --mode=production --config webpack.prod.js",
+    "build-min": "webpack --mode=production --config webpack.prod.min.js",
+    "build-features": "webpack --mode=production --config webpack.features.js",
+    "build-features-min": "webpack --mode=production --config webpack.features.min.js",
+    "build-dev": "webpack --mode=development --config webpack.dev.js"
+
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
+    }
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn lint",
+      "yarn format"
+    ]
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "p5": "1.9.0",
+    "@babel/core": "^7.20.2",
+    "@types/p5": "^1.7.6",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "ts-loader": "^9.4.3",
+    "typescript": "^4.9.5",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0",
+    "webpack-merge": "^5.10.0"
+  }
+}
